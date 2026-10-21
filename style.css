@@ -1,0 +1,59 @@
+:root{--bg:#f5f7fa;--card:#fff;--text:#111827;--muted:#6b7280;--line:#d1d5db;--accent:#2563eb;--accent-d:#1d4ed8;--err:#dc2626;--errbg:#fef2f2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--line:#475569;--accent:#3b82f6;--accent-d:#60a5fa;--err:#f87171;--errbg:#3b1d1d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--card);border-radius:12px;padding:20px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1.title{font-size:1.4rem;margin:8px 0 12px}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 4px}
+.progress>div{height:100%;background:var(--accent);transition:width .3s}
+.progress-label{font-size:.8rem;color:var(--muted);margin-bottom:12px;text-align:right}
+h2.page-title{font-size:1.15rem;margin:16px 0}
+.panel{margin:16px 0}
+.panel>.panel-title{font-size:1rem;font-weight:600;margin:12px 0 8px}
+.item{padding:8px;border-radius:8px;border:1px solid transparent}
+.item.missing{border-color:var(--err);background:var(--errbg)}
+.err-msg{display:none;color:var(--err);font-size:.85rem;margin-top:4px}
+.item.missing .err-msg{display:block}
+/* Rating */
+.rating{display:flex;align-items:center;gap:8px;justify-content:center}
+.rating .lbl{flex:1;font-size:.9rem;color:var(--muted)}
+.rating .lbl.min{text-align:right}.rating .lbl.max{text-align:left}
+.rating .btns{display:flex;gap:8px}
+.rating input,.matrix input{position:absolute;opacity:0;pointer-events:none}
+.rating .btns label{width:38px;height:38px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;background:var(--card)}
+.rating input:checked+label,.matrix input:checked+label{background:var(--accent);border-color:var(--accent);color:#fff}
+.rating input:focus-visible+label,.matrix input:focus-visible+label{outline:3px solid var(--accent-d);outline-offset:2px}
+.rating .btns label:hover{border-color:var(--accent)}
+/* Matrix */
+.matrix{margin:16px 0}
+.mx-head,.mx-row{display:grid;grid-template-columns:minmax(160px,24%) repeat(7,1fr);align-items:center}
+.mx-head{font-size:.75rem;font-weight:600;text-align:center;padding:0 4px 4px}
+.mx-row{padding:4px;border-radius:8px}
+.mx-row:nth-child(even){background:rgba(127,127,127,.08)}
+.mx-row.missing{outline:2px solid var(--err);background:var(--errbg)}
+.mx-text{font-size:.9rem;padding-right:8px}
+.mx-cell{display:flex;justify-content:center;position:relative}
+.matrix label{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;background:var(--card)}
+.mx-legend{display:none;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+/* Checkbox (consent) */
+.consent label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.consent input{margin-top:5px;width:18px;height:18px;flex:none}
+/* Nav */
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
+button.btn{font:inherit;padding:10px 22px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.btn:hover{background:var(--accent-d)}
+button.btn.secondary{background:transparent;color:var(--accent)}
+button.btn:disabled{opacity:.6;cursor:wait}
+.banner{background:#fef3c7;color:#78350f;padding:8px 12px;border-radius:8px;font-size:.85rem;margin-bottom:12px}
+.fail{color:var(--err);margin-top:12px}
+@media(max-width:700px){
+  #app{padding:8px}.card{padding:12px 8px}
+  .rating{flex-wrap:wrap}.rating .lbl{flex:0 0 45%;order:1;font-size:.8rem}
+  .rating .lbl.max{text-align:right;order:2}.rating .btns{order:3;width:100%;justify-content:space-between;gap:2px}
+  .rating .btns label{width:34px;height:34px}
+  .mx-head{display:none}.mx-legend{display:block}
+  .mx-row{grid-template-columns:repeat(7,1fr);padding:8px 4px}
+  .mx-text{grid-column:1/-1;margin-bottom:6px}
+  .matrix label{width:32px;height:32px}
+}
