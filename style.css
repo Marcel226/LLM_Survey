@@ -35,7 +35,9 @@ h2.page-title{font-size:1.15rem;margin:16px 0}
 .mx-text{font-size:.9rem;padding-right:8px}
 .mx-cell{display:flex;justify-content:center;position:relative}
 .matrix label{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;background:var(--card)}
-.mx-legend{display:none;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.mx-legend{display:none;font-size:.82rem;color:var(--text);background:rgba(127,127,127,.12);border-radius:8px;padding:8px 10px;margin-bottom:8px;line-height:1.7}
+.mx-legend span{display:inline-block;white-space:nowrap;margin-right:12px}
+.mx-sel{display:none}
 /* Checkbox (consent) */
 .consent label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
 .consent input{margin-top:5px;width:18px;height:18px;flex:none}
@@ -50,10 +52,11 @@ button.btn:disabled{opacity:.6;cursor:wait}
 @media(max-width:700px){
   #app{padding:8px}.card{padding:12px 8px}
   .rating{flex-wrap:wrap}.rating .lbl{flex:0 0 45%;order:1;font-size:.8rem}
-  .rating .lbl.max{text-align:right;order:2}.rating .btns{order:3;width:100%;justify-content:space-between;gap:2px}
+  .rating .lbl.min{text-align:left}.rating .lbl.max{text-align:right;order:2}.rating .btns{order:3;width:100%;justify-content:space-between;gap:2px}
   .rating .btns label{width:34px;height:34px}
   .mx-head{display:none}.mx-legend{display:block}
   .mx-row{grid-template-columns:repeat(7,1fr);padding:8px 4px}
   .mx-text{grid-column:1/-1;margin-bottom:6px}
+  .mx-sel{display:block;grid-column:1/-1;margin-top:6px;font-size:.8rem;color:var(--accent-d);min-height:1.2em;text-align:center}
   .matrix label{width:32px;height:32px}
 }

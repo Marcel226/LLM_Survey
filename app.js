@@ -74,18 +74,22 @@
     if (e.type === "matrix") {
       const m = el("div", { class: "matrix" });
       const cols = e.columns;
-      m.append(el("div", { class: "mx-legend" }, `${cols[0].value} = ${cols[0].text} · ${cols[cols.length - 1].value} = ${cols[cols.length - 1].text}`));
+      m.append(el("div", { class: "mx-legend" }, cols.map(c => el("span", {}, el("b", {}, String(c.value)), " = " + c.text))));
       m.append(el("div", { class: "mx-head" }, el("span"), cols.map(c => el("span", {}, c.text))));
       e.rows.forEach(r => {
         const key = `${e.name}__${r.value}`;
         const row = el("div", { class: "mx-row", role: "radiogroup", "data-key": key, "aria-label": r.text }, el("div", { class: "mx-text" }, r.text));
+        const sel = el("div", { class: "mx-sel" });
+        const labelOf = v => { const c = cols.find(x => x.value === v); return c ? c.value + " = " + c.text : ""; };
+        sel.textContent = labelOf(answers[key]);
         cols.forEach(c => {
           const id = `${key}_${c.value}`;
           const inp = el("input", { type: "radio", name: key, id, value: c.value });
           if (answers[key] === c.value) inp.checked = true;
-          inp.addEventListener("change", () => { answers[key] = c.value; row.classList.remove("missing"); });
+          inp.addEventListener("change", () => { answers[key] = c.value; sel.textContent = labelOf(c.value); row.classList.remove("missing"); });
           row.append(el("div", { class: "mx-cell", title: c.text }, inp, el("label", { for: id }, String(c.value))));
         });
+        row.append(sel);
         m.append(row);
       });
       parent.append(m); return;
