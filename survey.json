@@ -4077,5 +4077,6 @@
   "showProgressBar": true,
   "progressBarLocation": "aboveheader",
   "clearInvisibleValues": "none",
-  "completeText": "Submit"
+  "completeText": "Submit",
+  "showTitle": false
 }
