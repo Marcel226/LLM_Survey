@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Evaluation of LLM responses",
   "completedHtml": "<h3>Thank you for your participation!</h3><p>Your answers have been submitted. You can now close this window.</p>",
   "pages": [
     {
@@ -4077,6 +4077,5 @@
   "showProgressBar": true,
   "progressBarLocation": "aboveheader",
   "clearInvisibleValues": "none",
-  "completeText": "Submit",
-  "showTitle": false
+  "completeText": "Submit"
 }
